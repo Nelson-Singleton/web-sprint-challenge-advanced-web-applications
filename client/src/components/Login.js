@@ -19,7 +19,7 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault()
     axiosWithAuth()
-      .post('api/login', credentials)
+      .post('api/login', credentials.credentials)
       .then(res => {
         localStorage.setItem('token', res.data.payload)
         console.log(res)
@@ -40,7 +40,7 @@ const Login = () => {
   }
 
   return (
-    <>
+    <><div>
       <h1>Welcome to the Bubble App!</h1>
       <h2>Login</h2>
       <form>
@@ -48,15 +48,18 @@ const Login = () => {
         type = 'text'
         name = 'username'
         value = {credentials.credentials.username}
+        onChange = {handleChanges}
         />
         <h3>Password:</h3> <input
         type = 'text'
         name = 'username'
         value = {credentials.credentials.password}
+        onChange = {handleChanges}
         />
         <button onClick = {login}>Login</button>
         
       </form>
+      </div>
     </>
   );
 };
